@@ -1,1 +1,5 @@
-export class ArabicToRomanConverter {}
+export class ArabicToRomanConverter {
+    static convert(arabicNumber: number) {
+        return "I";
+    }
+}
