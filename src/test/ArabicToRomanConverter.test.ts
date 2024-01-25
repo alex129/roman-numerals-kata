@@ -44,4 +44,20 @@ describe("Arabic to roman converter", () => {
   test("should convert 2008 to MMVIII", () => {
     expect(ArabicToRomanConverter.convert(2008)).toBe("MMVIII");
   });
+
+  test("should convert 5000 to _V", () => {
+    expect(ArabicToRomanConverter.convert(5000)).toBe("_V");
+  });
+
+  test("should convert 5001 to _VI", () => {
+    expect(ArabicToRomanConverter.convert(5001)).toBe("_VI");
+  });
+
+  test("should convert 10000 to _V_V", () => {
+    expect(ArabicToRomanConverter.convert(10000)).toBe("_V_V");
+  });
+
+  test('should throw error when converting -1', () => {
+     expect(() => ArabicToRomanConverter.convert(-1)).toThrowError('Could not convert -1 to roman number');
+  });
 });

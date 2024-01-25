@@ -27,4 +27,5 @@ export const ArabicRomanDictionary: Record<number, string> = {
     800: "DCCC",
     900: "CM",
     1000: "M",
+    5000: "_V",
 }
