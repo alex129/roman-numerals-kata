@@ -1,11 +1,12 @@
-import { ArabicRomanDictionary } from './constants';
+import { Dictionary } from './constants';
+import { ArabicRomanDictionary } from './types';
 
 export class ArabicToRomanConverter {
   static convert(arabicNumber: number): string {
     if (arabicNumber === 0) {
       return '';
     }
-    const romanNumber = ArabicRomanDictionary[arabicNumber];
+    const romanNumber = this.getRomanFromDictionary(arabicNumber);
 
     if (!romanNumber) {
       const closestDictionary = this.getClosestDictionaryNumber(arabicNumber);
@@ -13,16 +14,15 @@ export class ArabicToRomanConverter {
         throw new Error(`Could not convert ${arabicNumber} to roman number`);
       }
 
-      const integerPart = Math.floor(arabicNumber / closestDictionary.dicitonaryNumber) * closestDictionary.dicitonaryNumber;
-      const remainder = arabicNumber % closestDictionary.dicitonaryNumber;
+      const integerPart = Math.floor(arabicNumber / closestDictionary.arabic) * closestDictionary.arabic;
+      const remainder = arabicNumber % closestDictionary.arabic;
 
-      let romanIntegerPart = ArabicRomanDictionary[integerPart];
+      let romanIntegerPart = this.getRomanFromDictionary(integerPart);
       if (!romanIntegerPart) {
         romanIntegerPart = '';
-        if (closestDictionary) {
-          for (let i = 0; i < integerPart / closestDictionary.dicitonaryNumber; i++) {
-            romanIntegerPart += closestDictionary.romanNumber;
-          }
+
+        for (let i = 0; i < integerPart / closestDictionary.arabic; i++) {
+          romanIntegerPart += closestDictionary.roman;
         }
       }
 
@@ -33,14 +33,12 @@ export class ArabicToRomanConverter {
     return romanNumber;
   }
 
-  static getClosestDictionaryNumber(arabicNumber: number): { dicitonaryNumber: number; romanNumber: string } | null {
-    const dictionaryEntries = Object.entries(ArabicRomanDictionary).sort((a, b) => Number(b[0]) - Number(a[0]));
-    for (const [dictionaryNumber, romanNumber] of dictionaryEntries) {
-      if (Number(dictionaryNumber) <= arabicNumber) {
-        return { dicitonaryNumber: Number(dictionaryNumber), romanNumber };
-      }
-    }
+  static getRomanFromDictionary(arabicNumber: number): string | undefined {
+    return Dictionary.find((dictionaryEntry) => dictionaryEntry.arabic === arabicNumber)?.roman;
+  }
 
-    return null;
+  static getClosestDictionaryNumber(arabicNumber: number): ArabicRomanDictionary | undefined {
+    const sortByArabicDesc = (a: ArabicRomanDictionary, b: ArabicRomanDictionary) => b.arabic - a.arabic;
+    return Dictionary.sort(sortByArabicDesc).find((dictionaryEntry) => dictionaryEntry.arabic <= arabicNumber);
   }
 }
