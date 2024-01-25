@@ -28,4 +28,8 @@ describe("Arabic to roman converter", () => {
   test("should convert 210 to CCX", () => {
     expect(ArabicToRomanConverter.convert(210)).toBe("CCX");
   });
+
+    test("should convert 846 to DCCCXLVI", () => {
+        expect(ArabicToRomanConverter.convert(846)).toBe("DCCCXLVI");
+    });
 });
