@@ -29,7 +29,15 @@ describe("Arabic to roman converter", () => {
     expect(ArabicToRomanConverter.convert(210)).toBe("CCX");
   });
 
-    test("should convert 846 to DCCCXLVI", () => {
-        expect(ArabicToRomanConverter.convert(846)).toBe("DCCCXLVI");
-    });
+  test("should convert 846 to DCCCXLVI", () => {
+    expect(ArabicToRomanConverter.convert(846)).toBe("DCCCXLVI");
+  });
+
+  test("should convert 1999 to MCMXCIX", () => {
+    expect(ArabicToRomanConverter.convert(1999)).toBe("MCMXCIX");
+  });
+
+  test("should convert 2020 to MMXX", () => {
+    expect(ArabicToRomanConverter.convert(2020)).toBe("MMXX");
+  });
 });

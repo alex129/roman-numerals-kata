@@ -12,13 +12,22 @@ export class ArabicToRomanConverter {
       const integerPart = Math.floor(arabicNumber / nearestLowerPowerOfTen) * nearestLowerPowerOfTen;
       const remainder = arabicNumber % nearestLowerPowerOfTen;
 
-      const romanIntegerPart = this.convert(integerPart);
+      let romanIntegerPart = ArabicRomanDictionary[integerPart];
+      if (!romanIntegerPart) {
+        romanIntegerPart = "";
+        for(let i = 0; i < integerPart / nearestLowerPowerOfTen; i++) { 
+          romanIntegerPart += ArabicRomanDictionary[nearestLowerPowerOfTen];
+        }
+      }
+      
       const romanRemainder = this.convert(remainder);
+
 
       return `${romanIntegerPart}${romanRemainder}`;
     }
     return romanNumber;
   }
+
 
   static getNearestLowerPowerOfTen(number: number): number {
     let power = 1;
