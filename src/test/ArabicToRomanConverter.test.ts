@@ -20,4 +20,8 @@ describe("Arabic to roman converter", () => {
   test("should convert 11 to XI", () => {
     expect(ArabicToRomanConverter.convert(11)).toBe("XI");
   });
+
+  test("should convert 200 to CC", () => {
+    expect(ArabicToRomanConverter.convert(200)).toBe("CC");
+  });
 });

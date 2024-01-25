@@ -18,4 +18,13 @@ export const ArabicRomanDictionary: Record<number, string> = {
     80: "LXX",
     90: "XC",
     100: "C",
+    200: "CC",
+    300: "CCC",
+    400: "CD",
+    500: "D",
+    600: "DC",
+    700: "DCC",
+    800: "DCC",
+    900: "CM",
+    1000: "M",
 }
