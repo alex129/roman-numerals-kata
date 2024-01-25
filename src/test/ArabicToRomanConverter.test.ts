@@ -40,4 +40,8 @@ describe("Arabic to roman converter", () => {
   test("should convert 2020 to MMXX", () => {
     expect(ArabicToRomanConverter.convert(2020)).toBe("MMXX");
   });
+
+  test("should convert 2008 to MMVIII", () => {
+    expect(ArabicToRomanConverter.convert(2008)).toBe("MMVIII");
+  });
 });
