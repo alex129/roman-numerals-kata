@@ -24,4 +24,8 @@ describe("Arabic to roman converter", () => {
   test("should convert 200 to CC", () => {
     expect(ArabicToRomanConverter.convert(200)).toBe("CC");
   });
+
+  test("should convert 210 to CCX", () => {
+    expect(ArabicToRomanConverter.convert(210)).toBe("CCX");
+  });
 });
