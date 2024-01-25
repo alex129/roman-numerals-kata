@@ -49,6 +49,10 @@ describe("Arabic to roman converter", () => {
     expect(ArabicToRomanConverter.convert(5000)).toBe("_V");
   });
 
+  test("should convert 6000 to _VM", () => {
+    expect(ArabicToRomanConverter.convert(6000)).toBe("_VM");
+  });
+
   test("should convert 5001 to _VI", () => {
     expect(ArabicToRomanConverter.convert(5001)).toBe("_VI");
   });
