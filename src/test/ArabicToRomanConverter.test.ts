@@ -21,6 +21,14 @@ describe("Arabic to roman converter", () => {
     expect(ArabicToRomanConverter.convert(11)).toBe("XI");
   });
 
+  test("should convert 46 to XLVI", () => {
+    expect(ArabicToRomanConverter.convert(46)).toBe("XLVI");
+  });
+
+  test("should convert 78 to LXXVIII", () => {
+    expect(ArabicToRomanConverter.convert(78)).toBe("LXXVIII");
+  });
+
   test("should convert 200 to CC", () => {
     expect(ArabicToRomanConverter.convert(200)).toBe("CC");
   });
